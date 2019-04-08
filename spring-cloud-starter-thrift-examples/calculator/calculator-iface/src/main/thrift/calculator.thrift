@@ -1,4 +1,9 @@
-namespace io.ostenant.rpc.thrift.examples
+namespace cpp calculator
+namespace java com.msunsoft.service
+namespace csharp msunsoft.service
+namespace php calculator
+namespace perl calculator
+
 
 service calculator {
     i32 add(1: i32 arg1, 2: i32 arg2)

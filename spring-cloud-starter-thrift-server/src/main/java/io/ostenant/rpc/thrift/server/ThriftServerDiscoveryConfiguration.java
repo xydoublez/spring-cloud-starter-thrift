@@ -41,6 +41,9 @@ public class ThriftServerDiscoveryConfiguration {
 
         String serviceName = thriftServerProperties.getServiceId();
         String serverHostAddress = Inet4Address.getLocalHost().getHostAddress();
+        if(!thriftServerProperties.getHost().isEmpty()){
+            serverHostAddress=thriftServerProperties.getHost();
+        }
         int servicePort = thriftServerProperties.getPort();
         String serviceId = String.join(":", serviceName, serverHostAddress, String.valueOf(servicePort));
 

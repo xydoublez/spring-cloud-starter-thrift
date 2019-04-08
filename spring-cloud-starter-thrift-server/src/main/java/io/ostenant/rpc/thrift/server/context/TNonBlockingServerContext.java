@@ -37,6 +37,7 @@ public class TNonBlockingServerContext implements ContextBuilder {
             throws TTransportException, IOException {
         serverContext = (TNonBlockingServerContext) prepare();
         serverContext.args = new TNonBlockingServerArgument(serviceWrappers, properties);
+
         return new TNonblockingServer(serverContext.args);
     }
 

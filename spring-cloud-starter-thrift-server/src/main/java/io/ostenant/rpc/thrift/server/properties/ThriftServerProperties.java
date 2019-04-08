@@ -14,7 +14,14 @@ public class ThriftServerProperties {
      * 服务端口号
      */
     private int port = 25000;
-
+    /**
+     * 绑定ip,默认为空
+     */
+    private String host="";
+    /**
+     * 读取缓存大小设置，默认1M
+     */
+    private  long maxReadBufferBytes=1*1024 * 1024L;
     /**
      * 服务注册信息（默认不开启）
      */
@@ -105,5 +112,21 @@ public class ThriftServerProperties {
 
     public void setThreadedSelector(TThreadedSelectorServerProperties threadedSelector) {
         this.threadedSelector = threadedSelector;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public long getMaxReadBufferBytes() {
+        return maxReadBufferBytes;
+    }
+
+    public void setMaxReadBufferBytes(long maxReadBufferBytes) {
+        this.maxReadBufferBytes = maxReadBufferBytes;
     }
 }

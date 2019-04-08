@@ -27,7 +27,8 @@ public class THsHaServerArgument extends THsHaServer.Args {
     public THsHaServerArgument(List<ThriftServiceWrapper> serviceWrappers, ThriftServerProperties properties)
             throws TTransportException {
         super(new TNonblockingServerSocket(properties.getPort()));
-
+        //李志强
+        this.maxReadBufferBytes = properties.getMaxReadBufferBytes();
         transportFactory(new TFastFramedTransport.Factory());
         protocolFactory(new TCompactProtocol.Factory());
 

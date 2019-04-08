@@ -1,5 +1,6 @@
 server:
   port: 8088
+  address: 10.68.2.16
 
 endpoints:
   health:
@@ -14,7 +15,7 @@ spring:
     name: thrift-calculator-client
   cloud:
     consul:
-      host: localhost
+      host: 10.68.5.195
       port: 8500
       discovery:
         register: true
@@ -22,8 +23,9 @@ spring:
         health-check-interval: 10s
         health-check-path: /health
         service-name: calculator-client-rest
-        instance-id: ${spring.cloud.consul.discovery.service-name}:${spring.cloud.client.ipAddress}:${server.port}
+        instance-id: ${spring.cloud.consul.discovery.service-name}:${server.address}:${server.port}
         prefer-ip-address: true
+        ip-address: 10.68.2.16
       retry:
         max-attempts: 3
         max-interval: 2000

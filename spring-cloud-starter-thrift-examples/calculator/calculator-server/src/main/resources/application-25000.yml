@@ -4,7 +4,7 @@ server:
 spring:
   cloud:
     consul:
-      host: localhost
+      host: 10.68.5.195
       port: 8500
       discovery:
         register: true
@@ -19,21 +19,23 @@ spring:
         prefer-ip-address: true
   thrift:
     server:
-      service-id: thrift-calculator-rpc-server
-      service-model: hsHa
-      port: 25000
-      worker-queue-capacity: 1000
-      hs-ha:
-        min-worker-threads: 5
-        max-worker-threads: 20
-        keep-alived-time: 5
+      service-id: test-server-rpc
+      service-model: threadedSelector
+      port: 25001
+      worker-queue-capacity: 10000
+      threaded-selector:
+        accept-queue-size-per-thread: 10000
+        selector-threads: 40
+        min-worker-threads: 100
+        max-worker-threads: 400
       discovery:
         enabled: true
-        host: localhost
+        host: 10.68.5.195
         port: 8500
         tags:
-          - hsHa
-          - calculator-25000
+          - threadedselector
+          - thrift
+          - test-server
         health-check:
           enabled: true
           check-interval: 10
